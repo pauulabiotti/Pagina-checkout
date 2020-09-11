@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>checkout</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles.css" rel="stylesheet">
+    <script type="text/javascript" src="funcoes.js"></script>
+</head>
+<body>
+  <h1>Verificação de saída</h1>
+  <hr>
+  
+   <div class="row">
+      <div class="col-75">
+        <div class="container">
+          <form action="#">
+    
+            <div class="row">
+              <div class="col-50">
+                <h3>Endereço de cobrança</h3>
+    
+                <div class="row">
+                  <div class="col-50">
+                    <label for="nome">Nome<h11>*</h11></label>
+                    <input type="text" id="nome" name="nome" placeholder="">
+                  </div>
+                  <div class="col-50">
+                    <label for="sobrenome">Sobrenome<h11>*</h11></label>
+                    <input type="text" id="sobrenome" name="sobrenome" placeholder="">
+                  </div>
+                </div>
+
+                <label for="cep">Cep<h11>*</h11></label>
+                <input oninput="mascara(this, 'cep')" id="cep" type="text"  placeholder="xxxxx-xxx" autocomplete="off" name="customer['cep']">
+                
+                <label for="rua">Rua<h11>*</h11></label>
+                <input type="text" id="rua" name="rua" placeholder="">
+
+                <div class="row">
+                  <div class="col-50">
+                    <label for="numero">Nº<h11>*</h11></label>
+                    <input type="text" id="numero"  name="numero" placeholder="">
+                  </div>
+                  <div class="col-50">
+                    <label for="complemento">Complemento</label>
+                    <input type="text" id="complemento" name="complemento" placeholder="">
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-50">
+                    <label for="bairro">Bairro<h11>*</h11></label>
+                    <input type="text" id="bairro"  name="bairro" placeholder="">
+                  </div>
+                  <div class="col-50">
+                    <label for="cidade">Cidade<h11>*</h11></label>
+                    <input type="text" id="cidade" name="cidade" placeholder="">
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-50">
+                    <label for="estado">Estado<h11>*</h11></label>
+                    <input type="text" id="estado"  name="estado" placeholder="">
+                  </div>
+                  <div class="col-50">
+                    <label for="tel">Telefone<h11>*</h11></label>
+                    <input oninput="mascara(this, 'tel')" id="tel" type="text"  placeholder="xxxxx-xxxx" autocomplete="off" name="customer['tel']">
+                  </div>
+                </div>
+
+              </div>
+    
+              <div class="col-50">
+                <h3> Método de envio</h3>
+                <input type="radio" id="correio" name="correio" checked="checked" value="correio">Correios<br></input>
+                <label for="regular">Entrega em 12 dias úteis<br>R$15,00</label><br>
+                <input type="radio" id="sedex" name="sedex" value="sedex">Sedex<br></input>
+                <label for="regular">Entrega em 6 dias úteis<br>R$52,00</label><br>
+              
+                <h3>Forma de pagamento</h3>
+                <label for="cartoes">Cartões Aceitos</label>
+                <div class="icon-container">
+                  <img src="img/visa_logo.png"/>
+                  <img src="img/mastercard_logo.png"/>
+                </div>
+                <label for="cartao">Número de cartao<h11>*</h11></label>
+                <input type="text" id="cartao" name="cartao" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" onKeyUp="formatCreditCardOnKey(event)" onBlur="formatCreditCard()" onFocus="formatCreditCard()"/>    
+                <div class="row">
+                  <div class="col-50">
+                     <label for="data">Data de vencimento<h11>*</h11></label>
+                     <input oninput="mascara(this, 'data')" id="data" type="text" class="form-control" placeholder=" xx/xxxx" autocomplete="off" name="customer['birthdate']">
+                  </div>
+                  <div class="col-50">
+                    <label for="cvv">CVV<h11>*</h11></label>
+                    <input type="text" id="cvv" name="cvv" placeholder="xxx" maxlength="3">
+                  </div>
+                </div>
+                <label for="cpf">Cpf<h11>*</h11></label>
+                <input oninput="mascara(this, 'cpf')" id="cpf" type="text"  placeholder="xxx.xxx.xxx-xx" autocomplete="off" name="customer['cpf']">
+              </div>  
+            </div>
+            <label>
+              <input type="checkbox" checked="checked" name="endereco"> Endereço de entrega igual ao de cobrança
+            </label>
+          </form>
+        </div> 
+      </div>
+    
+      <div class="col-25">
+        <div class="container">
+          <h4>Revise seu pedido</h4>
+
+          <div class="row">
+            <div class="col-15">
+              <img src="img/cama.jpg" height="155" width="155"/>
+            </div>
+            <div class="col-10">
+              <p class="old-price"></p>
+            <p><span class="price"  id="produto" style="color:black"><b>Produto</b></span></p>
+            <br>
+            <p><span class="price" id="nome_produto">Jogo de cama do batman</span></p>
+            <br>
+            <p><span class="price"  id="quantidade" style="color:black"><b>Quantidade</b></span></p>
+            <br>
+            <p><span class="price" id="numero_quantidade">1</span></p>
+            <br>
+            <p><span class="price"  id="preco" style="color:black"><b>Preço</b></span></p>
+            <br>
+            <p><span class="price" id="valor_preco">R$39,90</span></p>
+
+            </div>
+          </div>
+
+          <hr>
+          <p>Sub total <span class="price" style="color:black"><b>$39,90</b></span></p>
+          <p>Frete <span class="price" style="color:black"><b>$15,00</b></span></p>
+          <p>Total <span class="price" style="color:black"><b>$54,90</b></span></p>
+
+          <input type="submit" value="Finalizar pedido" class="btn">
+        </div>
+      </div>
+    </div>
+
+    
+</body>
+</html>
